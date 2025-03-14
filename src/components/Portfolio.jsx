@@ -100,46 +100,48 @@ const Portfolio = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 font-[Poppins]">
       <Header />
 
-      <main className="pt-16">
+      <main>
         {/* Hero Section */}
         <section
           id="home"
-          className="relative min-h-screen bg-gradient-to-r from-black via-gray-900 to-black text-white overflow-hidden flex items-center"
+          className="relative min-h-[100dvh] bg-gradient-to-r from-black via-gray-900 to-black text-white overflow-hidden flex items-center"
         >
-          {/* Animated Background Elements */}
-          <div className="absolute inset-0">
-            {/* Animated grid */}
-            <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:20px_20px]">
+          {/* Animated Background Elements - Optimized for performance */}
+          <div className="absolute inset-0 pointer-events-none">
+            {/* Animated grid with reduced opacity on mobile */}
+            <div className="absolute inset-0 bg-grid-white/[0.03] sm:bg-grid-white/[0.05] bg-[size:20px_20px]">
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
             </div>
 
-            {/* Animated orbs */}
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-700"></div>
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] bg-purple-900/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+            {/* Animated orbs - simplified for mobile */}
+            <div className="absolute top-1/4 left-1/4 w-64 sm:w-96 h-64 sm:h-96 bg-purple-500/5 sm:bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-64 sm:w-96 h-64 sm:h-96 bg-blue-500/5 sm:bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-700"></div>
+
+            {/* Center orb - hidden on smallest screens */}
+            <div className="hidden xs:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30rem] sm:w-[40rem] h-[30rem] sm:h-[40rem] bg-purple-900/10 sm:bg-purple-900/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
           </div>
 
-          {/* Content Container */}
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-            <div className="text-center space-y-8">
-              {/* Main Heading with Gradient and Animation */}
+          {/* Content Container with improved spacing for all devices */}
+          <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32">
+            <div className="text-center space-y-6 sm:space-y-8">
+              {/* Main Heading with better size scaling */}
               <Fade cascade delay={300}>
                 <div className="relative inline-block">
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 blur-3xl"></div>
-                  <h1 className="relative text-5xl md:text-6xl lg:text-7xl font-bold">
+                  <h1 className="relative text-4xl xs:text-5xl sm:text-6xl lg:text-7xl font-bold">
                     <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-400">
-                      Justine Kenneth P. Gaviola
+                      Kenneth P. Gaviola
                     </span>
                     <Fade cascade delay={700}>
-                      <div className="mt-4 text-2xl md:text-3xl text-gray-300 font-light">
+                      <div className="mt-3 sm:mt-4 text-xl xs:text-2xl sm:text-3xl text-gray-300 font-light">
                         Software Developer
                       </div>
                     </Fade>
                     <Fade cascade delay={900}>
-                      <div className="mt-2 text-xl text-purple-400">
+                      <div className="mt-1 sm:mt-2 text-lg xs:text-xl text-purple-400">
                         Mobile & Web Application Specialist
                       </div>
                     </Fade>
@@ -147,25 +149,25 @@ const Portfolio = () => {
                 </div>
               </Fade>
 
-              {/* Status Badge with Animation */}
+              {/* Status Badge with Animation - more compact on mobile */}
               <Zoom delay={1500}>
                 <div className="flex justify-center">
-                  <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/20">
+                  <div className="inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/20">
                     <span className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
-                    <span className="text-gray-300">
-                      Available for Freelance & Contract Work
+                    <span className="text-sm sm:text-base text-gray-300">
+                      Available for Contract Work
                     </span>
                   </div>
                 </div>
               </Zoom>
 
-              {/* CTA Buttons with Animation */}
+              {/* CTA Buttons with improved touch targets */}
               <Slide direction="up" delay={1800}>
-                <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
-                  {/* Primary CTA */}
+                <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mt-6 sm:mt-8">
+                  {/* Primary CTA with larger touch area */}
                   <a
                     href="#contact"
-                    className="group relative px-8 py-3 overflow-hidden rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 text-white font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25"
+                    className="group relative px-6 sm:px-8 py-3.5 overflow-hidden rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 text-white font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25 min-w-[160px] min-h-[44px] flex items-center justify-center"
                   >
                     <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                     <span className="relative flex items-center justify-center gap-2">
@@ -176,10 +178,10 @@ const Portfolio = () => {
                     </span>
                   </a>
 
-                  {/* Secondary CTA */}
+                  {/* Secondary CTA with larger touch area */}
                   <a
                     href="#projects"
-                    className="group relative px-8 py-3 rounded-lg bg-gray-800 text-white font-medium overflow-hidden transition-all duration-300 hover:scale-105"
+                    className="group relative px-6 sm:px-8 py-3.5 rounded-lg bg-gray-800 text-white font-medium overflow-hidden transition-all duration-300 hover:scale-105 min-w-[160px] min-h-[44px] flex items-center justify-center"
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-blue-500/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                     <span className="relative">View projects</span>
@@ -187,9 +189,9 @@ const Portfolio = () => {
                 </div>
               </Slide>
 
-              {/* Scroll Indicator with Animation */}
+              {/* Scroll Indicator - hidden on smaller screens */}
               <Bounce delay={2100}>
-                <div className="absolute bottom-15 left-1/2 -translate-x-1/2">
+                <div className="absolute sm:bottom-15 left-1/2 -translate-x-1/2 hidden sm:block">
                   <div className="w-6 h-10 rounded-full border-2 border-purple-400 flex justify-center p-1">
                     <div className="w-1 h-2 rounded-full bg-purple-400 animate-scroll"></div>
                   </div>
@@ -198,16 +200,17 @@ const Portfolio = () => {
             </div>
           </div>
 
-          {/* Decorative Side Elements */}
-          <div className="absolute -left-32 top-1/2 -translate-y-1/2 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl"></div>
-          <div className="absolute -right-32 top-1/3 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl"></div>
+          {/* Decorative Side Elements - reduced or hidden on mobile */}
+          <div className="hidden sm:block absolute -left-32 top-1/2 -translate-y-1/2 w-48 sm:w-64 h-48 sm:h-64 bg-purple-500/5 rounded-full blur-3xl"></div>
+          <div className="hidden sm:block absolute -right-32 top-1/3 w-48 sm:w-64 h-48 sm:h-64 bg-blue-500/5 rounded-full blur-3xl"></div>
 
-          <div className="absolute bottom-0 left-0 w-full h-24 overflow-hidden bg-gradient-to-b from-transparent to-gray-900 backdrop-blur-sm">
-            <div className="absolute inset-0 opacity-30">
+          {/* Bottom gradient - simplified for better performance */}
+          <div className="absolute bottom-0 left-0 w-full h-16 sm:h-24 overflow-hidden bg-gradient-to-b from-transparent to-gray-900 backdrop-blur-sm">
+            <div className="absolute inset-0 opacity-20 sm:opacity-30">
+              {/* Reduced number of decorative dots on mobile */}
               <div className="absolute h-1 w-1 rounded-full bg-purple-500 top-1/4 left-1/4"></div>
               <div className="absolute h-2 w-2 rounded-full bg-blue-500 top-1/3 left-1/2"></div>
-              <div className="absolute h-1 w-1 rounded-full bg-purple-500 top-1/2 left-3/4"></div>
-              {/* Add more dots with varied positions and sizes */}
+              <div className="hidden sm:block absolute h-1 w-1 rounded-full bg-purple-500 top-1/2 left-3/4"></div>
             </div>
           </div>
         </section>
@@ -215,7 +218,7 @@ const Portfolio = () => {
         {/* About Section with Animations */}
         <section
           id="about"
-          className={`py-24 bg-gradient-to-br from-black to-gray-900 transition-all duration-1000 relative ${
+          className={`py-24 scroll-mt-24 bg-gradient-to-br from-black to-gray-900 transition-all duration-1000 relative ${
             isVisible.about
               ? "opacity-100 translate-y-0"
               : "opacity-0 translate-y-10"
@@ -591,7 +594,7 @@ const Portfolio = () => {
         {/* Portfolio Showcase Section */}
         <section
           id="projects"
-          className={`py-24 bg-gradient-to-br from-gray-900 to-black transition-all duration-1000 relative ${
+          className={`py-24 scroll-mt-24 bg-gradient-to-br from-gray-900 to-black transition-all duration-1000 relative ${
             isVisible.projects
               ? "opacity-100 translate-y-0"
               : "opacity-0 translate-y-10"
@@ -811,7 +814,7 @@ const Portfolio = () => {
         {/* Contact Section with Animations */}
         <section
           id="contact"
-          className={`py-24 bg-gradient-to-br from-gray-900 via-black to-gray-900 transition-all duration-1000 relative ${
+          className={`py-24 scroll-mt-24 bg-gradient-to-br from-gray-900 via-black to-gray-900 transition-all duration-1000 relative ${
             isVisible.contact
               ? "opacity-100 translate-y-0"
               : "opacity-0 translate-y-10"
@@ -918,7 +921,7 @@ const Portfolio = () => {
                         <div className="flex items-center justify-center gap-2 text-gray-300">
                           <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
                           <span>
-                            Available for remote work & on-site opportunities
+                            Available for remote & on-site opportunities
                           </span>
                         </div>
                       </div>
