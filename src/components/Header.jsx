@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { MenuIcon, XIcon } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { MenuIcon, XIcon } from "lucide-react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('home'); // Set default to 'home'
+  const [activeSection, setActiveSection] = useState("home");
 
   const navItems = [
-    { label: 'Home', href: '#home' },
-    { label: 'About', href: '#about' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Contact', href: '#contact' }
+    { label: "Home", href: "#home" },
+    { label: "About", href: "#about" },
+    { label: "Projects", href: "#projects" },
+    { label: "Contact", href: "#contact" },
   ];
 
   useEffect(() => {
@@ -18,13 +18,15 @@ const Header = () => {
       setScrolled(window.scrollY > 20);
 
       // Get all sections
-      const sections = navItems.map(item => ({
-        id: item.href.substring(1),
-        element: document.querySelector(item.href)
-      })).filter(section => section.element);
+      const sections = navItems
+        .map((item) => ({
+          id: item.href.substring(1),
+          element: document.querySelector(item.href),
+        }))
+        .filter((section) => section.element);
 
       // Find the section that is currently in view
-      const currentSection = sections.find(section => {
+      const currentSection = sections.find((section) => {
         const rect = section.element.getBoundingClientRect();
         // Consider a section "active" when it's top is near the viewport top
         return rect.top <= 100 && rect.bottom >= 100;
@@ -35,19 +37,20 @@ const Header = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     // Initial check for active section
     handleScroll();
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <header 
+    <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300
-        ${scrolled 
-          ? 'bg-gray-900/95 backdrop-blur-lg shadow-lg shadow-black/10' 
-          : 'bg-transparent'
+        ${
+          scrolled
+            ? "bg-gray-900/95 backdrop-blur-lg shadow-lg shadow-black/10"
+            : "bg-transparent"
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -70,15 +73,20 @@ const Header = () => {
                   key={label}
                   href={href}
                   className={`relative px-4 py-2 text-sm font-medium transition-colors duration-200
-                    ${activeSection === href.substring(1)
-                      ? 'text-purple-400'
-                      : 'text-gray-300 hover:text-purple-400'
+                    ${
+                      activeSection === href.substring(1)
+                        ? "text-purple-400"
+                        : "text-gray-300 hover:text-purple-400"
                     }`}
                 >
                   {label}
-                  <span 
+                  <span
                     className={`absolute bottom-0 left-0 w-full h-0.5 bg-purple-400 transform origin-left transition-transform duration-300
-                      ${activeSection === href.substring(1) ? 'scale-x-100' : 'scale-x-0'}`}
+                      ${
+                        activeSection === href.substring(1)
+                          ? "scale-x-100"
+                          : "scale-x-0"
+                      }`}
                   />
                 </a>
               ))}
@@ -100,9 +108,9 @@ const Header = () => {
         </div>
 
         {/* Mobile Menu */}
-        <div 
+        <div
           className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-            isMenuOpen ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'
+            isMenuOpen ? "max-h-48 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
           <nav className="py-2 space-y-1">
@@ -112,9 +120,10 @@ const Header = () => {
                 href={href}
                 onClick={() => setIsMenuOpen(false)}
                 className={`block px-4 py-2 text-sm rounded-lg transition-all duration-200
-                  ${activeSection === href.substring(1)
-                    ? 'bg-purple-500/10 text-purple-400'
-                    : 'text-gray-300 hover:bg-gray-800/50 hover:text-purple-400'
+                  ${
+                    activeSection === href.substring(1)
+                      ? "bg-purple-500/10 text-purple-400"
+                      : "text-gray-300 hover:bg-gray-800/50 hover:text-purple-400"
                   }`}
               >
                 {label}

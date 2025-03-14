@@ -1,15 +1,14 @@
-import React from 'react';
-import { Heart, Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
+import { Heart, Github, Linkedin, Mail, ArrowUp } from "lucide-react";
 
 const Footer = () => {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const socialLinks = [
-    { Icon: Github, href: 'https://github.com', label: 'GitHub' },
-    { Icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { Icon: Mail, href: 'mailto:justken2000@gmail.com', label: 'Email' }
+    { Icon: Github, href: "https://github.com", label: "GitHub" },
+    { Icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+    { Icon: Mail, href: "mailto:justken2000@gmail.com", label: "Email" },
   ];
 
   return (
@@ -26,8 +25,8 @@ const Footer = () => {
               About This Portfolio
             </h3>
             <p className="text-gray-300">
-              This portfolio showcases my journey and projects as an Information Technology student
-              specializing in Mobile & Web Application development. Built with passion and modern technologies.
+              This portfolio showcases my journey and projects as an Software
+              Developer. Built with passion and modern technologies.
             </p>
           </div>
 
@@ -54,12 +53,12 @@ const Footer = () => {
             <div className="flex items-center space-x-2 text-gray-300">
               <span>Made with</span>
               <Heart className="w-4 h-4 text-red-500 fill-current animate-pulse" />
-              <span>using React & Tailwind</span>
             </div>
-            
+
             {/* Copyright */}
             <div className="text-sm text-gray-400">
-              © {new Date().getFullYear()} Justine Kenneth Gaviola. All rights reserved.
+              © {new Date().getFullYear()} Justine Kenneth Gaviola. All rights
+              reserved.
             </div>
 
             {/* Enhanced Scroll to Top Button */}
