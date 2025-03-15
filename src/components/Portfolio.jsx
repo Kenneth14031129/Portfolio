@@ -21,7 +21,7 @@ import nodejsImage from "../assets/Node.js.png";
 import mongodbImage from "../assets/MongoDB.png";
 import gitImage from "../assets/Git.png";
 import vsCodeImage from "../assets/VSCode.png";
-import githubImage from "../assets/Github.png";
+import githubImage from "../assets/GitHub.png";
 import cImage from "../assets/C.png";
 import cPlusPlusImage from "../assets/C++.png";
 import mysqlImage from "../assets/MySQL.png";
