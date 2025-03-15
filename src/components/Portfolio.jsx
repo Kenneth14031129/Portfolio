@@ -288,29 +288,9 @@ const Portfolio = () => {
                   </Slide>
                 </div>
 
-                {/* Middle Column - Professional Summary & Current Focus */}
+                {/* Middle Column - Current Focus */}
                 <div className="col-span-12 lg:col-span-4">
                   <Fade delay={400} duration={1000} triggerOnce>
-                    {/* Professional Summary */}
-                    <div className="bg-gray-800/30 rounded-lg p-4 sm:p-6 border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 mb-4 sm:mb-6">
-                      <h3 className="text-base sm:text-lg font-semibold text-white mb-3 sm:mb-4 flex items-center gap-2">
-                        <div className="p-2 bg-purple-500/10 rounded-lg">
-                          <FileText className="w-5 h-5 text-purple-400" />
-                        </div>
-                        Professional Summary
-                      </h3>
-                      <p className="text-gray-300 leading-relaxed">
-                        Currently pursuing my degree with a focus on creating
-                        user-centric applications. I&apos;m passionate about
-                        learning new technologies and applying them to solve
-                        real-world problems through my academic projects.
-                        Seeking opportunities to contribute to innovative
-                        projects and expand my technical expertise.
-                      </p>
-                    </div>
-                  </Fade>
-
-                  <Fade delay={600} duration={1000} triggerOnce>
                     {/* Current Focus */}
                     <div className="space-y-3">
                       <h3 className="text-base sm:text-lg font-semibold text-white mb-3 sm:mb-4 flex items-center gap-2">
