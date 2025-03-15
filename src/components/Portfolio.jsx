@@ -241,28 +241,6 @@ const Portfolio = () => {
                     </div>
                   </Fade>
 
-                  {/* Social connection cards - centered */}
-                  <Fade cascade direction="up" damping={0.3} delay={600}>
-                    <div className="flex justify-center gap-3">
-                      {[
-                        { icon: Mail, label: "Email" },
-                        { icon: Github, label: "GitHub" },
-                        { icon: Linkedin, label: "LinkedIn" },
-                      ].map(({ icon: Icon, label }) => (
-                        <div
-                          key={label}
-                          className="group relative p-2.5 backdrop-blur-sm bg-gray-800/50 rounded-lg border border-gray-700/50 hover:border-purple-500/50 hover:bg-purple-500/10 transition-all duration-300"
-                        >
-                          <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-blue-500/0 group-hover:from-purple-500/10 group-hover:to-blue-500/10 rounded-lg transition-all duration-300"></div>
-                          <Icon className="w-5 h-5 text-gray-400 group-hover:text-purple-400 transform group-hover:scale-110 transition-all duration-300" />
-                          <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 whitespace-nowrap px-2 py-1 rounded-md bg-gray-800 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                            {label}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </Fade>
-
                   {/* Education card with 3D depth - centered */}
                   <Slide direction="up" delay={800} triggerOnce>
                     <div className="w-full max-w-xs">
