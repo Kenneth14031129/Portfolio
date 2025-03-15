@@ -39,29 +39,19 @@ const Portfolio = () => {
       title: "LIFEEC: Web Application",
       description:
         "An advanced web platform designed for owners and administrators of HomeMedix.",
-      tags: ["React.js", "Node.js", "MongoDB", "REST API"],
+      tags: ["React", "NodeJS", "MongoDB", "Tailwind CSS"],
       Icon: MonitorIcon,
       iconColor: "text-violet-400",
-      stats: {
-        users: "Owner & Admin",
-        type: "Capstone Project",
-        platform: "Web",
-      },
     },
     {
       id: 2,
       title: "LIFEEC: Mobile Application",
       description:
         "Multi-role mobile platform serving nurses, relatives, and nutritionists at HomeMedix.",
-      tags: ["Flutter", "Dart", "MongoDB", "REST API", "Real-time Updates"],
+      tags: ["Flutter", "Dart", "MongoDB"],
       isAndroidApp: true,
       Icon: SmartphoneIcon,
       iconColor: "text-green-400",
-      stats: {
-        users: "Nurse, Relative, Nutritionist",
-        type: "Capstone Project",
-        platform: "Android",
-      },
     },
   ];
 
@@ -181,7 +171,7 @@ const Portfolio = () => {
           </div>
         </section>
 
-        {/* About Section with Animations */}
+        {/* About Section with Enhanced Animations */}
         <section
           id="about"
           className={`py-24 scroll-mt-24 bg-gradient-to-br from-black to-gray-900 transition-all duration-1000 relative ${
@@ -199,7 +189,7 @@ const Portfolio = () => {
 
           {/* Section Header */}
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative mb-12">
-            <Fade duration={1000}>
+            <Fade cascade damping={0.1} duration={800}>
               <div className="text-center">
                 <h2 className="text-3xl sm:text-4xl font-bold bg-clip-text text-white bg-gradient-to-r from-purple-400 to-blue-400 mb-2 sm:mb-4">
                   About Me
@@ -220,102 +210,112 @@ const Portfolio = () => {
                 {/* Column 1: Profile & Bio - Centered on all screen sizes */}
                 <div className="md:col-span-4 lg:col-span-3 flex flex-col items-center space-y-6">
                   {/* Enhanced profile image with 3D hover effect */}
-                  <div className="group perspective relative">
-                    <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full opacity-75 blur group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
-                    <div className="relative ring-2 ring-white/10 rounded-full group-hover:scale-105 transition duration-300">
-                      <div className="aspect-square w-28 sm:w-36 h-28 sm:h-36 rounded-full overflow-hidden transform transition-all duration-500 shadow-xl">
-                        <img
-                          src={profileImage}
-                          alt="Kenneth Gaviola"
-                          className="w-full h-full object-cover group-hover:scale-110 group-hover:rotate-3 transition-all duration-700"
-                        />
+                  <Zoom delay={300} duration={800}>
+                    <div className="group perspective relative">
+                      <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full opacity-75 blur group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+                      <div className="relative ring-2 ring-white/10 rounded-full group-hover:scale-105 transition duration-300">
+                        <div className="aspect-square w-28 sm:w-36 h-28 sm:h-36 rounded-full overflow-hidden transform transition-all duration-500 shadow-xl">
+                          <img
+                            src={profileImage}
+                            alt="Kenneth Gaviola"
+                            className="w-full h-full object-cover group-hover:scale-110 group-hover:rotate-3 transition-all duration-700"
+                          />
+                        </div>
+                        <div className="absolute inset-0 rounded-full bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       </div>
-                      <div className="absolute inset-0 rounded-full bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
-                  </div>
+                  </Zoom>
 
                   {/* Bio with modern typography - centered */}
-                  <div className="text-center space-y-4">
-                    <h3 className="text-2xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
-                      Kenneth P. Gaviola
-                    </h3>
-                    <p className="text-purple-300 font-medium text-lg tracking-wide">
-                      Software Developer
-                    </p>
-                    <p className="text-gray-400 text-sm">
-                      Quezon City, Metro Manila
-                    </p>
-                  </div>
+                  <Fade cascade damping={0.2} delay={400} duration={1000}>
+                    <div className="text-center space-y-4">
+                      <h3 className="text-2xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
+                        Kenneth P. Gaviola
+                      </h3>
+                      <p className="text-purple-300 font-medium text-lg tracking-wide">
+                        Software Developer
+                      </p>
+                      <p className="text-gray-400 text-sm">
+                        Quezon City, Metro Manila
+                      </p>
+                    </div>
+                  </Fade>
 
                   {/* Social connection cards - centered */}
-                  <div className="flex justify-center gap-3">
-                    {[
-                      { icon: Mail, label: "Email" },
-                      { icon: Github, label: "GitHub" },
-                      { icon: Linkedin, label: "LinkedIn" },
-                    ].map(({ icon: Icon, label }) => (
-                      <div
-                        key={label}
-                        className="group relative p-2.5 backdrop-blur-sm bg-gray-800/50 rounded-lg border border-gray-700/50 hover:border-purple-500/50 hover:bg-purple-500/10 transition-all duration-300"
-                      >
-                        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-blue-500/0 group-hover:from-purple-500/10 group-hover:to-blue-500/10 rounded-lg transition-all duration-300"></div>
-                        <Icon className="w-5 h-5 text-gray-400 group-hover:text-purple-400 transform group-hover:scale-110 transition-all duration-300" />
-                        <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 whitespace-nowrap px-2 py-1 rounded-md bg-gray-800 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                          {label}
+                  <Fade cascade direction="up" damping={0.3} delay={600}>
+                    <div className="flex justify-center gap-3">
+                      {[
+                        { icon: Mail, label: "Email" },
+                        { icon: Github, label: "GitHub" },
+                        { icon: Linkedin, label: "LinkedIn" },
+                      ].map(({ icon: Icon, label }) => (
+                        <div
+                          key={label}
+                          className="group relative p-2.5 backdrop-blur-sm bg-gray-800/50 rounded-lg border border-gray-700/50 hover:border-purple-500/50 hover:bg-purple-500/10 transition-all duration-300"
+                        >
+                          <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-blue-500/0 group-hover:from-purple-500/10 group-hover:to-blue-500/10 rounded-lg transition-all duration-300"></div>
+                          <Icon className="w-5 h-5 text-gray-400 group-hover:text-purple-400 transform group-hover:scale-110 transition-all duration-300" />
+                          <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 whitespace-nowrap px-2 py-1 rounded-md bg-gray-800 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                            {label}
+                          </div>
                         </div>
-                      </div>
-                    ))}
-                  </div>
+                      ))}
+                    </div>
+                  </Fade>
 
                   {/* Education card with 3D depth - centered */}
-                  <div className="w-full max-w-xs">
-                    <div className="group relative backdrop-blur-md bg-gray-800/40 rounded-xl p-4 border border-gray-700/50 overflow-hidden transition-all duration-300 hover:border-purple-500/40">
-                      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-blue-500/0 group-hover:from-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300"></div>
+                  <Slide direction="up" delay={800} triggerOnce>
+                    <div className="w-full max-w-xs">
+                      <div className="group relative backdrop-blur-md bg-gray-800/40 rounded-xl p-4 border border-gray-700/50 overflow-hidden transition-all duration-300 hover:border-purple-500/40">
+                        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-blue-500/0 group-hover:from-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300"></div>
 
-                      {/* Top education icon */}
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className="p-2 rounded-lg bg-purple-500/10 border border-purple-500/20">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="w-5 h-5 text-purple-400"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path d="M12 14l9-5-9-5-9 5 9 5z" />
-                            <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998a12.078 12.078 0 01.665-6.479L12 14z" />
-                          </svg>
+                        {/* Top education icon */}
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="p-2 rounded-lg bg-purple-500/10 border border-purple-500/20">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="w-5 h-5 text-purple-400"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                              <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998a12.078 12.078 0 01.665-6.479L12 14z" />
+                            </svg>
+                          </div>
+                          <h4 className="font-semibold text-white text-xs sm:text-sm">
+                            BS Information Technology
+                          </h4>
                         </div>
-                        <h4 className="font-semibold text-white text-xs sm:text-sm">
-                          BS Information Technology
-                        </h4>
-                      </div>
 
-                      <div className="ml-12">
-                        <p className="text-xs sm:text-sm text-purple-400 font-medium">
-                          Mobile & Web Application
-                        </p>
-                        <div className="flex items-center gap-2 mt-2">
-                          <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
-                          <p className="text-sm text-gray-400">
-                            2023 - Present
+                        <div className="ml-12">
+                          <p className="text-xs sm:text-sm text-purple-400 font-medium">
+                            Mobile & Web Application
                           </p>
+                          <div className="flex items-center gap-2 mt-2">
+                            <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+                            <p className="text-sm text-gray-400">
+                              2023 - Present
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </Slide>
                 </div>
 
                 {/* Column 2: Skills & Focus */}
                 <div className="md:col-span-8 lg:col-span-4 space-y-4 sm:space-y-8">
                   {/* Current Focus with alignment matching Key Skills */}
                   <div>
-                    <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                      <div className="p-2 rounded-lg bg-purple-500/10 border border-purple-500/20">
-                        <Code className="w-5 h-5 text-purple-400" />
-                      </div>
-                      Current Focus
-                    </h3>
+                    <Fade cascade direction="left" damping={0.1} delay={300}>
+                      <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                        <div className="p-2 rounded-lg bg-purple-500/10 border border-purple-500/20">
+                          <Code className="w-5 h-5 text-purple-400" />
+                        </div>
+                        Current Focus
+                      </h3>
+                    </Fade>
 
                     <div className="space-y-4">
                       {[
@@ -339,99 +339,46 @@ const Portfolio = () => {
                           text: "Team Collaboration",
                           description: "Project Management",
                         },
-                      ].map((item) => (
-                        <div
+                      ].map((item, index) => (
+                        <Slide
+                          direction="left"
+                          delay={400 + index * 100}
                           key={item.text}
-                          className="group relative backdrop-blur-sm bg-gray-800/40 rounded-lg p-3 sm:p-4 border border-gray-700/50 overflow-hidden hover:border-purple-500/40 transition-all duration-300"
+                          triggerOnce
                         >
-                          <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-blue-500/0 group-hover:from-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300"></div>
+                          <div className="group relative backdrop-blur-sm bg-gray-800/40 rounded-lg p-3 sm:p-4 border border-gray-700/50 overflow-hidden hover:border-purple-500/40 transition-all duration-300">
+                            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-blue-500/0 group-hover:from-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300"></div>
 
-                          {/* Main content row with improved alignment */}
-                          <div className="flex justify-between items-start">
-                            <div className="flex items-start gap-3">
-                              <div className="text-2xl group-hover:scale-110 transition-transform duration-300 mt-0.5">
-                                {item.icon}
-                              </div>
-                              <div>
-                                <h4 className="text-gray-200 font-medium">
-                                  {item.text}
-                                </h4>
-                                <p className="text-xs text-gray-400 mt-1">
-                                  {item.description}
-                                </p>
+                            {/* Main content row with improved alignment */}
+                            <div className="flex justify-between items-start">
+                              <div className="flex items-start gap-3">
+                                <div className="text-2xl group-hover:scale-110 transition-transform duration-300 mt-0.5">
+                                  {item.icon}
+                                </div>
+                                <div>
+                                  <h4 className="text-gray-200 font-medium">
+                                    {item.text}
+                                  </h4>
+                                  <p className="text-xs text-gray-400 mt-1">
+                                    {item.description}
+                                  </p>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
+                        </Slide>
                       ))}
                     </div>
                   </div>
 
                   {/* Skill bars with animations */}
                   <div>
-                    <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                      <div className="p-2 rounded-lg bg-purple-500/10 border border-purple-500/20">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="w-5 h-5 text-purple-400"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                          <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                        </svg>
-                      </div>
-                      Key Skills
-                    </h3>
-                    <div className="space-y-4">
-                      {[
-                        { name: "Frontend Development", percentage: 75 },
-                        { name: "Backend Development", percentage: 60 },
-                        { name: "Mobile Development", percentage: 70 },
-                      ].map((skill) => (
-                        <div key={skill.name} className="space-y-2">
-                          <div className="flex justify-between">
-                            <span className="text-sm font-medium text-gray-300">
-                              {skill.name}
-                            </span>
-                            <span className="text-sm font-medium text-purple-400">
-                              {skill.percentage}%
-                            </span>
-                          </div>
-                          <div className="h-2.5 sm:h-2 w-full bg-gray-700/50 rounded-full overflow-hidden">
-                            <div
-                              className="h-full bg-gradient-to-r from-purple-500 to-blue-500 rounded-full transform origin-left transition-transform duration-1000 animate-pulse-slow"
-                              style={{ width: `${skill.percentage}%` }}
-                            ></div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Column 3: Tech Stack with 3D cards */}
-                <div className="md:col-span-12 lg:col-span-5">
-                  <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                    <div className="p-2 rounded-lg bg-purple-500/10 border border-purple-500/20">
-                      <Code className="w-5 h-5 text-purple-400" />
-                    </div>
-                    Tech Stack
-                  </h3>
-
-                  {/* Tech stack with glassmorphism cards */}
-                  <div className="backdrop-blur-sm bg-gray-800/30 rounded-xl border border-gray-700/50 p-6 hover:border-purple-500/30 transition-all duration-500 relative overflow-hidden">
-                    <div className="space-y-6">
-                      {/* Languages section with modern 3D cards */}
-                      <div className="relative">
-                        <h4 className="text-base font-medium text-purple-400 mb-4 flex items-center gap-2">
+                    <Fade cascade direction="left" damping={0.1} delay={800}>
+                      <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                        <div className="p-2 rounded-lg bg-purple-500/10 border border-purple-500/20">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            className="w-4 h-4"
+                            className="w-5 h-5 text-purple-400"
                             viewBox="0 0 24 24"
                             fill="none"
                             stroke="currentColor"
@@ -439,119 +386,204 @@ const Portfolio = () => {
                             strokeLinecap="round"
                             strokeLinejoin="round"
                           >
-                            <polyline points="16 18 22 12 16 6"></polyline>
-                            <polyline points="8 6 2 12 8 18"></polyline>
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
                           </svg>
-                          Programming Languages
-                        </h4>
-                        <div className="grid grid-cols-3 sm:grid-cols-5 gap-3 sm:gap-4">
-                          {[
-                            javascriptImage,
-                            cImage,
-                            cPlusPlusImage,
-                            javaImage,
-                            kotlinImage,
-                          ].map((image, i) => (
-                            <div
-                              key={i}
-                              className="group relative transform transition-all duration-300 hover:z-10 hover:-translate-y-2 active:translate-y-0 active:scale-95"
-                            >
-                              <div className="aspect-square bg-gray-800/70 backdrop-blur-md rounded-xl overflow-hidden flex items-center justify-center p-3 border border-gray-700/30 hover:border-purple-500/50 shadow-lg hover:shadow-purple-500/10 transition-all duration-300">
-                                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-                                <img
-                                  src={image}
-                                  alt=""
-                                  className="w-full h-full object-contain transition-all duration-300 group-hover:scale-110 filter drop-shadow-[0_0_5px_rgba(139,92,246,0.3)]"
-                                />
-                              </div>
+                        </div>
+                        Key Skills
+                      </h3>
+                    </Fade>
+                    <div className="space-y-4">
+                      {[
+                        { name: "Frontend Development", percentage: 75 },
+                        { name: "Backend Development", percentage: 60 },
+                        { name: "Mobile Development", percentage: 70 },
+                      ].map((skill, index) => (
+                        <Slide
+                          direction="left"
+                          delay={900 + index * 150}
+                          key={skill.name}
+                          triggerOnce
+                        >
+                          <div className="space-y-2">
+                            <div className="flex justify-between">
+                              <span className="text-sm font-medium text-gray-300">
+                                {skill.name}
+                              </span>
+                              <span className="text-sm font-medium text-purple-400">
+                                {skill.percentage}%
+                              </span>
                             </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Web Development */}
-                      <div className="relative">
-                        <h4 className="text-base font-medium text-purple-400 mb-4 flex items-center gap-2">
-                          💻 Web Development
-                        </h4>
-                        <div className="grid grid-cols-3 sm:grid-cols-5 gap-3 sm:gap-4">
-                          {[htmlImage, cssImage, reactImage, nodejsImage].map(
-                            (image, i) => (
+                            <div className="h-2.5 sm:h-2 w-full bg-gray-700/50 rounded-full overflow-hidden">
                               <div
-                                key={i}
-                                className="group relative transform transition-all duration-300 hover:z-10 hover:-translate-y-2 active:translate-y-0 active:scale-95"
-                              >
-                                <div className="aspect-square bg-gray-800/70 backdrop-blur-md rounded-xl overflow-hidden flex items-center justify-center p-3 border border-gray-700/30 hover:border-purple-500/50 shadow-lg hover:shadow-purple-500/10 transition-all duration-300">
-                                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-                                  <img
-                                    src={image}
-                                    alt=""
-                                    className="w-full h-full object-contain transition-all duration-300 group-hover:scale-110 filter drop-shadow-[0_0_5px_rgba(139,92,246,0.3)]"
-                                  />
-                                </div>
-                              </div>
-                            )
-                          )}
-                        </div>
-                      </div>
-
-                      {/* Database & Tools */}
-                      <div className="relative">
-                        <h4 className="text-base font-medium text-purple-400 mb-4 flex items-center gap-2">
-                          ⚙️ Databases & Tools
-                        </h4>
-                        <div className="grid grid-cols-3 sm:grid-cols-5 gap-3 sm:gap-4">
-                          {[
-                            mongodbImage,
-                            mysqlImage,
-                            gitImage,
-                            githubImage,
-                            vsCodeImage,
-                          ].map((image, i) => (
-                            <div
-                              key={i}
-                              className="group relative transform transition-all duration-300 hover:z-10 hover:-translate-y-2 active:translate-y-0 active:scale-95"
-                            >
-                              <div className="aspect-square bg-gray-800/70 backdrop-blur-md rounded-xl overflow-hidden flex items-center justify-center p-3 border border-gray-700/30 hover:border-purple-500/50 shadow-lg hover:shadow-purple-500/10 transition-all duration-300">
-                                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-                                <img
-                                  src={image}
-                                  alt=""
-                                  className="w-full h-full object-contain transition-all duration-300 group-hover:scale-110 filter drop-shadow-[0_0_5px_rgba(139,92,246,0.3)]"
-                                />
-                              </div>
+                                className="h-full bg-gradient-to-r from-purple-500 to-blue-500 rounded-full transform origin-left transition-all duration-1500 ease-out"
+                                style={{
+                                  width: `${skill.percentage}%`,
+                                  animation: `growWidth-${index} 1.5s ease-out forwards`,
+                                }}
+                              ></div>
                             </div>
-                          ))}
-                        </div>
-                      </div>
+                          </div>
+                        </Slide>
+                      ))}
+                    </div>
+                  </div>
+                </div>
 
-                      {/* Mobile Development */}
-                      <div className="relative">
-                        <h4 className="text-base font-medium text-purple-400 mb-4 flex items-center gap-2">
-                          📱 Mobile Development
-                        </h4>
-                        <div className="grid grid-cols-3 sm:grid-cols-5 gap-3 sm:gap-4">
-                          {[androidStudioImage, flutterImage].map(
-                            (image, i) => (
-                              <div
+                {/* Column 3: Tech Stack with 3D cards */}
+                <div className="md:col-span-12 lg:col-span-5">
+                  <Fade cascade direction="right" damping={0.1} delay={500}>
+                    <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                      <div className="p-2 rounded-lg bg-purple-500/10 border border-purple-500/20">
+                        <Code className="w-5 h-5 text-purple-400" />
+                      </div>
+                      Tech Stack
+                    </h3>
+                  </Fade>
+
+                  {/* Tech stack with glassmorphism cards */}
+                  <Fade direction="up" delay={600} duration={1000} triggerOnce>
+                    <div className="backdrop-blur-sm bg-gray-800/30 rounded-xl border border-gray-700/50 p-6 hover:border-purple-500/30 transition-all duration-500 relative overflow-hidden">
+                      <div className="space-y-6">
+                        {/* Languages section with modern 3D cards */}
+                        <div className="relative">
+                          <h4 className="text-base font-medium text-purple-400 mb-4 flex items-center gap-2">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="w-4 h-4"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            >
+                              <polyline points="16 18 22 12 16 6"></polyline>
+                              <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                            Programming Languages
+                          </h4>
+                          <div className="grid grid-cols-3 sm:grid-cols-5 gap-3 sm:gap-4">
+                            {[
+                              javascriptImage,
+                              cImage,
+                              cPlusPlusImage,
+                              javaImage,
+                              kotlinImage,
+                            ].map((image, i) => (
+                              <Zoom
+                                delay={700 + i * 100}
                                 key={i}
-                                className="group relative transform transition-all duration-300 hover:z-10 hover:-translate-y-2 active:translate-y-0 active:scale-95"
+                                duration={600}
                               >
-                                <div className="aspect-square bg-gray-800/70 backdrop-blur-md rounded-xl overflow-hidden flex items-center justify-center p-3 border border-gray-700/30 hover:border-purple-500/50 shadow-lg hover:shadow-purple-500/10 transition-all duration-300">
-                                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-                                  <img
-                                    src={image}
-                                    alt=""
-                                    className="w-full h-full object-contain transition-all duration-300 group-hover:scale-110 filter drop-shadow-[0_0_5px_rgba(139,92,246,0.3)]"
-                                  />
+                                <div className="group relative transform transition-all duration-300 hover:z-10 hover:-translate-y-2 active:translate-y-0 active:scale-95">
+                                  <div className="aspect-square bg-gray-800/70 backdrop-blur-md rounded-xl overflow-hidden flex items-center justify-center p-3 border border-gray-700/30 hover:border-purple-500/50 shadow-lg hover:shadow-purple-500/10 transition-all duration-300">
+                                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                                    <img
+                                      src={image}
+                                      alt=""
+                                      className="w-full h-full object-contain transition-all duration-300 group-hover:scale-110 filter drop-shadow-[0_0_5px_rgba(139,92,246,0.3)]"
+                                    />
+                                  </div>
                                 </div>
-                              </div>
-                            )
-                          )}
+                              </Zoom>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Web Development */}
+                        <div className="relative">
+                          <h4 className="text-base font-medium text-purple-400 mb-4 flex items-center gap-2">
+                            💻 Web Development
+                          </h4>
+                          <div className="grid grid-cols-3 sm:grid-cols-5 gap-3 sm:gap-4">
+                            {[htmlImage, cssImage, reactImage, nodejsImage].map(
+                              (image, i) => (
+                                <Zoom
+                                  delay={1200 + i * 100}
+                                  key={i}
+                                  duration={600}
+                                >
+                                  <div className="group relative transform transition-all duration-300 hover:z-10 hover:-translate-y-2 active:translate-y-0 active:scale-95">
+                                    <div className="aspect-square bg-gray-800/70 backdrop-blur-md rounded-xl overflow-hidden flex items-center justify-center p-3 border border-gray-700/30 hover:border-purple-500/50 shadow-lg hover:shadow-purple-500/10 transition-all duration-300">
+                                      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                                      <img
+                                        src={image}
+                                        alt=""
+                                        className="w-full h-full object-contain transition-all duration-300 group-hover:scale-110 filter drop-shadow-[0_0_5px_rgba(139,92,246,0.3)]"
+                                      />
+                                    </div>
+                                  </div>
+                                </Zoom>
+                              )
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Database & Tools */}
+                        <div className="relative">
+                          <h4 className="text-base font-medium text-purple-400 mb-4 flex items-center gap-2">
+                            ⚙️ Databases & Tools
+                          </h4>
+                          <div className="grid grid-cols-3 sm:grid-cols-5 gap-3 sm:gap-4">
+                            {[
+                              mongodbImage,
+                              mysqlImage,
+                              gitImage,
+                              githubImage,
+                              vsCodeImage,
+                            ].map((image, i) => (
+                              <Zoom
+                                delay={1600 + i * 100}
+                                key={i}
+                                duration={600}
+                              >
+                                <div className="group relative transform transition-all duration-300 hover:z-10 hover:-translate-y-2 active:translate-y-0 active:scale-95">
+                                  <div className="aspect-square bg-gray-800/70 backdrop-blur-md rounded-xl overflow-hidden flex items-center justify-center p-3 border border-gray-700/30 hover:border-purple-500/50 shadow-lg hover:shadow-purple-500/10 transition-all duration-300">
+                                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                                    <img
+                                      src={image}
+                                      alt=""
+                                      className="w-full h-full object-contain transition-all duration-300 group-hover:scale-110 filter drop-shadow-[0_0_5px_rgba(139,92,246,0.3)]"
+                                    />
+                                  </div>
+                                </div>
+                              </Zoom>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Mobile Development */}
+                        <div className="relative">
+                          <h4 className="text-base font-medium text-purple-400 mb-4 flex items-center gap-2">
+                            📱 Mobile Development
+                          </h4>
+                          <div className="grid grid-cols-3 sm:grid-cols-5 gap-3 sm:gap-4">
+                            {[androidStudioImage, flutterImage].map(
+                              (image, i) => (
+                                <Zoom
+                                  delay={2000 + i * 100}
+                                  key={i}
+                                  duration={600}
+                                >
+                                  <div className="group relative transform transition-all duration-300 hover:z-10 hover:-translate-y-2 active:translate-y-0 active:scale-95">
+                                    <div className="aspect-square bg-gray-800/70 backdrop-blur-md rounded-xl overflow-hidden flex items-center justify-center p-3 border border-gray-700/30 hover:border-purple-500/50 shadow-lg hover:shadow-purple-500/10 transition-all duration-300">
+                                      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                                      <img
+                                        src={image}
+                                        alt=""
+                                        className="w-full h-full object-contain transition-all duration-300 group-hover:scale-110 filter drop-shadow-[0_0_5px_rgba(139,92,246,0.3)]"
+                                      />
+                                    </div>
+                                  </div>
+                                </Zoom>
+                              )
+                            )}
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </Fade>
                 </div>
               </div>
             </div>
@@ -584,10 +616,6 @@ const Portfolio = () => {
                   </h2>
                   <div className="h-1 w-24 sm:w-32 mx-auto bg-gradient-to-r from-purple-500 to-blue-500 rounded-full"></div>
                 </div>
-                <p className="mt-4 sm:mt-6 text-gray-400 text-base sm:text-lg max-w-2xl mx-auto">
-                  Exploring my journey through innovative projects and
-                  achievements
-                </p>
               </div>
             </Fade>
 
@@ -669,13 +697,6 @@ const Portfolio = () => {
                         </div>
 
                         <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent"></div>
-
-                        {/* Project Type Badge */}
-                        <div className="absolute top-4 right-4">
-                          <span className="px-4 py-2 bg-purple-500/20 backdrop-blur-sm rounded-full text-purple-300 text-sm border border-purple-500/20 font-medium">
-                            {project.stats.type}
-                          </span>
-                        </div>
                       </div>
 
                       <div className="relative p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6">
@@ -703,28 +724,6 @@ const Portfolio = () => {
                             </Fade>
                           ))}
                         </div>
-
-                        {/* Enhanced Project Stats */}
-                        <div className="grid grid-cols-3 gap-2 sm:gap-6 py-4 sm:py-6 border-t border-gray-700/50">
-                          {Object.entries(project.stats).map(
-                            ([key, value], statIndex) => (
-                              <Fade
-                                key={key}
-                                delay={700 + statIndex * 100}
-                                cascade
-                              >
-                                <div className="text-center">
-                                  <div className="text-purple-400 font-semibold text-sm sm:text-base">
-                                    {value}
-                                  </div>
-                                  <div className="text-xs sm:text-sm text-gray-400 capitalize mt-0.5 sm:mt-1">
-                                    {key}
-                                  </div>
-                                </div>
-                              </Fade>
-                            )
-                          )}
-                        </div>
                       </div>
                     </div>
                   </Fade>
@@ -749,10 +748,6 @@ const Portfolio = () => {
                       <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">
                         Certificates Coming Soon
                       </h3>
-                      <p className="text-gray-400 text-base sm:text-lg mb-4 sm:mb-6">
-                        Currently working on gaining certifications in various
-                        technology areas. Check back later for updates!
-                      </p>
                     </Fade>
 
                     {/* Progress Indicator */}
