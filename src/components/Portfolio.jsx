@@ -265,7 +265,7 @@ const Portfolio = () => {
 
                       {/* Name and Title */}
                       <h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-blue-400 to-purple-400 text-center">
-                        Justine Kenneth P. Gaviola
+                        Kenneth P. Gaviola
                       </h2>
                       <p className="mt-2 text-purple-400 text-lg">
                         Software Developer
