@@ -244,8 +244,8 @@ const Portfolio = () => {
                   {/* Education card with 3D depth - centered */}
                   <Slide direction="up" delay={800} triggerOnce>
                     <div className="w-full max-w-xs">
-                      <div className="group relative backdrop-blur-md bg-gray-800/40 rounded-xl p-4 border border-gray-700/50 overflow-hidden transition-all duration-300">
-                        <div className="absolute inset-0 transition-all duration-300"></div>
+                      <div className="group relative backdrop-blur-md bg-gray-800/40 rounded-xl p-4 border border-gray-700/50 overflow-hidden transition-all duration-300 hover:border-purple-500/40">
+                        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-blue-500/0 group-hover:from-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300"></div>
 
                         {/* Top education icon */}
                         <div className="flex items-center gap-3 mb-3">
