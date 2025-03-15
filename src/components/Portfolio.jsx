@@ -97,7 +97,7 @@ const Portfolio = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 font-[Poppins]">
       <Header />
 
-      <main>
+      <main id="main-content">
         {/* Hero Section */}
         <section
           id="home"
@@ -154,34 +154,6 @@ const Portfolio = () => {
                   </div>
                 </div>
               </Zoom>
-
-              {/* CTA Buttons with improved touch targets */}
-              <Slide direction="up" delay={1800}>
-                <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mt-6 sm:mt-8">
-                  {/* Primary CTA with larger touch area */}
-                  <a
-                    href="#contact"
-                    className="group relative px-6 sm:px-8 py-3.5 overflow-hidden rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 text-white font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25 min-w-[160px] min-h-[44px] flex items-center justify-center"
-                  >
-                    <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-                    <span className="relative flex items-center justify-center gap-2">
-                      Get in touch
-                      <span className="group-hover:translate-x-1 transition-transform duration-300">
-                        →
-                      </span>
-                    </span>
-                  </a>
-
-                  {/* Secondary CTA with larger touch area */}
-                  <a
-                    href="#projects"
-                    className="group relative px-6 sm:px-8 py-3.5 rounded-lg bg-gray-800 text-white font-medium overflow-hidden transition-all duration-300 hover:scale-105 min-w-[160px] min-h-[44px] flex items-center justify-center"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-blue-500/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-                    <span className="relative">View projects</span>
-                  </a>
-                </div>
-              </Slide>
 
               {/* Scroll Indicator - hidden on smaller screens */}
               <Bounce delay={2100}>
