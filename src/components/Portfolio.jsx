@@ -21,13 +21,13 @@ import nodejsImage from "../assets/Node.js.png";
 import mongodbImage from "../assets/MongoDB.png";
 import gitImage from "../assets/Git.png";
 import vsCodeImage from "../assets/VSCode.png";
-import githubImage from "../assets/github.png";
-import cImage from "../assets/c.png";
+import githubImage from "../assets/Github.png";
+import cImage from "../assets/C.png";
 import cPlusPlusImage from "../assets/C++.png";
-import mysqlImage from "../assets/mysql.png";
+import mysqlImage from "../assets/MySQL.png";
 import androidStudioImage from "../assets/Android-Studio.png";
-import javaImage from "../assets/java.png";
-import kotlinImage from "../assets/kotlin.png";
+import javaImage from "../assets/Java.png";
+import kotlinImage from "../assets/Kotlin.png";
 
 const Portfolio = () => {
   const [isVisible, setIsVisible] = useState({});
