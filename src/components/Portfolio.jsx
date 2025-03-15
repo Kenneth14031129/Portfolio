@@ -860,9 +860,7 @@ const Portfolio = () => {
                       <div className="relative pt-4 mt-6 border-t border-gray-700/50">
                         <div className="flex items-center justify-center gap-2 text-gray-300">
                           <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
-                          <span>
-                            Available for remote & on-site opportunities
-                          </span>
+                          <span>Available for remote & on-site</span>
                         </div>
                       </div>
                     </Fade>
