@@ -192,7 +192,7 @@ const Portfolio = () => {
         >
           {/* Animated Background Orbs */}
           <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+            <div className="hidden sm:block absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
             <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-700"></div>
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] bg-purple-900/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
           </div>
@@ -201,7 +201,7 @@ const Portfolio = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative mb-12">
             <Fade duration={1000}>
               <div className="text-center">
-                <h2 className="text-4xl font-bold bg-clip-text text-white bg-gradient-to-r from-purple-400 to-blue-400 mb-4">
+                <h2 className="text-3xl sm:text-4xl font-bold bg-clip-text text-white bg-gradient-to-r from-purple-400 to-blue-400 mb-2 sm:mb-4">
                   About Me
                 </h2>
                 <div className="h-1 w-20 mx-auto bg-gradient-to-r from-purple-500 to-blue-500 rounded-full"></div>
@@ -210,95 +210,114 @@ const Portfolio = () => {
           </div>
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <div className="bg-gray-800/30 rounded-2xl border border-gray-700/50 backdrop-blur-sm relative overflow-hidden">
-              {/* Main Content Grid - Restructured for Width */}
-              <div className="grid grid-cols-12 gap-4 sm:gap-6 p-4 sm:p-6 md:p-8">
-                {/* Left Column - Profile */}
-                <div className="col-span-12 lg:col-span-3">
-                  <Slide direction="left" duration={1000} triggerOnce>
-                    <div className="flex flex-col items-center lg:sticky lg:top-24">
-                      {/* Profile Picture */}
-                      <div className="relative w-24 h-24 sm:w-32 sm:h-32 group perspective mb-4 sm:mb-6">
-                        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-600 via-blue-600 to-purple-600 blur-lg opacity-75 group-hover:opacity-100 transition duration-1000 animate-tilt"></div>
-                        <div className="relative w-24 h-24 sm:w-32 sm:h-32 rounded-full border-3 sm:border-4 border-gray-800 overflow-hidden backdrop-blur-sm transform-gpu transition-transform duration-700 group-hover:scale-105">
-                          <img
-                            src={profileImage}
-                            alt="Profile"
-                            className="w-full h-full object-cover transform transition-all duration-700 group-hover:scale-110 group-hover:rotate-3"
-                          />
+            {/* Main content with glassmorphism effect */}
+            <div className="backdrop-blur-xl bg-white/[0.02] border border-white/10 rounded-3xl shadow-xl overflow-hidden relative">
+              {/* Inner glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-blue-500/5"></div>
+
+              {/* 3-column layout with improved spacing */}
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-8 p-4 sm:p-8">
+                {/* Column 1: Profile & Bio - Centered on all screen sizes */}
+                <div className="md:col-span-4 lg:col-span-3 flex flex-col items-center space-y-6">
+                  {/* Enhanced profile image with 3D hover effect */}
+                  <div className="group perspective relative">
+                    <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full opacity-75 blur group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+                    <div className="relative ring-2 ring-white/10 rounded-full group-hover:scale-105 transition duration-300">
+                      <div className="aspect-square w-28 sm:w-36 h-28 sm:h-36 rounded-full overflow-hidden transform transition-all duration-500 shadow-xl">
+                        <img
+                          src={profileImage}
+                          alt="Kenneth Gaviola"
+                          className="w-full h-full object-cover group-hover:scale-110 group-hover:rotate-3 transition-all duration-700"
+                        />
+                      </div>
+                      <div className="absolute inset-0 rounded-full bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                  </div>
+
+                  {/* Bio with modern typography - centered */}
+                  <div className="text-center space-y-4">
+                    <h3 className="text-2xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
+                      Kenneth P. Gaviola
+                    </h3>
+                    <p className="text-purple-300 font-medium text-lg tracking-wide">
+                      Software Developer
+                    </p>
+                    <p className="text-gray-400 text-sm">
+                      Quezon City, Metro Manila
+                    </p>
+                  </div>
+
+                  {/* Social connection cards - centered */}
+                  <div className="flex justify-center gap-3">
+                    {[
+                      { icon: Mail, label: "Email" },
+                      { icon: Github, label: "GitHub" },
+                      { icon: Linkedin, label: "LinkedIn" },
+                    ].map(({ icon: Icon, label }) => (
+                      <div
+                        key={label}
+                        className="group relative p-2.5 backdrop-blur-sm bg-gray-800/50 rounded-lg border border-gray-700/50 hover:border-purple-500/50 hover:bg-purple-500/10 transition-all duration-300"
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-blue-500/0 group-hover:from-purple-500/10 group-hover:to-blue-500/10 rounded-lg transition-all duration-300"></div>
+                        <Icon className="w-5 h-5 text-gray-400 group-hover:text-purple-400 transform group-hover:scale-110 transition-all duration-300" />
+                        <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 whitespace-nowrap px-2 py-1 rounded-md bg-gray-800 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                          {label}
                         </div>
                       </div>
+                    ))}
+                  </div>
 
-                      {/* Name and Title */}
-                      <h2 className="text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-blue-400 to-purple-400 text-center">
-                        Kenneth P. Gaviola
-                      </h2>
-                      <p className="mt-2 text-purple-400 text-lg">
-                        Software Developer
-                      </p>
-                      <p className="text-gray-400">Quezon City, Metro Manila</p>
+                  {/* Education card with 3D depth - centered */}
+                  <div className="w-full max-w-xs">
+                    <div className="group relative backdrop-blur-md bg-gray-800/40 rounded-xl p-4 border border-gray-700/50 overflow-hidden transition-all duration-300 hover:border-purple-500/40">
+                      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-blue-500/0 group-hover:from-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300"></div>
 
-                      {/* Social Links */}
-                      <div className="flex justify-center gap-4 mt-4">
-                        <a
-                          href="mailto:justken2000@gmail.com"
-                          className="group p-2 bg-gray-800/50 rounded-lg text-gray-300 hover:bg-purple-900/20 hover:text-purple-400 transition-all duration-300"
-                        >
-                          <Mail className="w-5 h-5 transform group-hover:rotate-12 transition-transform duration-300" />
-                        </a>
-                        <a
-                          href="https://github.com"
-                          className="group p-2 bg-gray-800/50 rounded-lg text-gray-300 hover:bg-purple-900/20 hover:text-purple-400 transition-all duration-300"
-                        >
-                          <Github className="w-5 h-5 transform group-hover:rotate-12 transition-transform duration-300" />
-                        </a>
-                        <a
-                          href="https://linkedin.com"
-                          className="group p-2 bg-gray-800/50 rounded-lg text-gray-300 hover:bg-purple-900/20 hover:text-purple-400 transition-all duration-300"
-                        >
-                          <Linkedin className="w-5 h-5 transform group-hover:rotate-12 transition-transform duration-300" />
-                        </a>
+                      {/* Top education icon */}
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="p-2 rounded-lg bg-purple-500/10 border border-purple-500/20">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="w-5 h-5 text-purple-400"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                            <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998a12.078 12.078 0 01.665-6.479L12 14z" />
+                          </svg>
+                        </div>
+                        <h4 className="font-semibold text-white text-xs sm:text-sm">
+                          BS Information Technology
+                        </h4>
                       </div>
 
-                      {/* Education Section */}
-                      <div className="mt-6 w-full">
-                        <div className="bg-gray-800/30 rounded-lg p-4 border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300">
-                          <h4 className="font-medium text-white flex items-center gap-2">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              className="w-5 h-5 text-purple-400"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path d="M12 14l9-5-9-5-9 5 9 5z" />
-                              <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998a12.078 12.078 0 01.665-6.479L12 14z" />
-                            </svg>
-                            BS Information Technology
-                          </h4>
-                          <p className="text-sm text-purple-400">
-                            Mobile & Web Application
-                          </p>
-                          <p className="text-sm text-gray-400 mt-1">
+                      <div className="ml-12">
+                        <p className="text-xs sm:text-sm text-purple-400 font-medium">
+                          Mobile & Web Application
+                        </p>
+                        <div className="flex items-center gap-2 mt-2">
+                          <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+                          <p className="text-sm text-gray-400">
                             2023 - Present
                           </p>
                         </div>
                       </div>
                     </div>
-                  </Slide>
+                  </div>
                 </div>
 
-                {/* Middle Column - Current Focus */}
-                <div className="col-span-12 lg:col-span-4">
-                  <Fade delay={400} duration={1000} triggerOnce>
-                    {/* Current Focus */}
-                    <div className="space-y-3">
-                      <h3 className="text-base sm:text-lg font-semibold text-white mb-3 sm:mb-4 flex items-center gap-2">
-                        <div className="p-2 bg-purple-500/10 rounded-lg">
-                          <Code className="w-5 h-5 text-purple-400" />
-                        </div>
-                        Current Focus
-                      </h3>
+                {/* Column 2: Skills & Focus */}
+                <div className="md:col-span-8 lg:col-span-4 space-y-4 sm:space-y-8">
+                  {/* Current Focus with alignment matching Key Skills */}
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                      <div className="p-2 rounded-lg bg-purple-500/10 border border-purple-500/20">
+                        <Code className="w-5 h-5 text-purple-400" />
+                      </div>
+                      Current Focus
+                    </h3>
+
+                    <div className="space-y-4">
                       {[
                         {
                           icon: "💻",
@@ -320,219 +339,221 @@ const Portfolio = () => {
                           text: "Team Collaboration",
                           description: "Project Management",
                         },
-                      ].map((item, index) => (
-                        <Zoom
-                          delay={700 + index * 100}
-                          duration={800}
+                      ].map((item) => (
+                        <div
                           key={item.text}
-                          triggerOnce
+                          className="group relative backdrop-blur-sm bg-gray-800/40 rounded-lg p-3 sm:p-4 border border-gray-700/50 overflow-hidden hover:border-purple-500/40 transition-all duration-300"
                         >
-                          <div className="group flex items-center gap-3 p-3 bg-gray-800/30 rounded-lg border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300">
-                            <span className="text-2xl group-hover:scale-110 transition-transform duration-300">
-                              {item.icon}
-                            </span>
-                            <div>
-                              <span className="text-gray-300 font-medium">
-                                {item.text}
-                              </span>
-                              <p className="text-xs text-gray-400">
-                                {item.description}
-                              </p>
+                          <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-blue-500/0 group-hover:from-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300"></div>
+
+                          {/* Main content row with improved alignment */}
+                          <div className="flex justify-between items-start">
+                            <div className="flex items-start gap-3">
+                              <div className="text-2xl group-hover:scale-110 transition-transform duration-300 mt-0.5">
+                                {item.icon}
+                              </div>
+                              <div>
+                                <h4 className="text-gray-200 font-medium">
+                                  {item.text}
+                                </h4>
+                                <p className="text-xs text-gray-400 mt-1">
+                                  {item.description}
+                                </p>
+                              </div>
                             </div>
                           </div>
-                        </Zoom>
+                        </div>
                       ))}
                     </div>
-                  </Fade>
+                  </div>
+
+                  {/* Skill bars with animations */}
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                      <div className="p-2 rounded-lg bg-purple-500/10 border border-purple-500/20">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="w-5 h-5 text-purple-400"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                      </div>
+                      Key Skills
+                    </h3>
+                    <div className="space-y-4">
+                      {[
+                        { name: "Frontend Development", percentage: 75 },
+                        { name: "Backend Development", percentage: 60 },
+                        { name: "Mobile Development", percentage: 70 },
+                      ].map((skill) => (
+                        <div key={skill.name} className="space-y-2">
+                          <div className="flex justify-between">
+                            <span className="text-sm font-medium text-gray-300">
+                              {skill.name}
+                            </span>
+                            <span className="text-sm font-medium text-purple-400">
+                              {skill.percentage}%
+                            </span>
+                          </div>
+                          <div className="h-2.5 sm:h-2 w-full bg-gray-700/50 rounded-full overflow-hidden">
+                            <div
+                              className="h-full bg-gradient-to-r from-purple-500 to-blue-500 rounded-full transform origin-left transition-transform duration-1000 animate-pulse-slow"
+                              style={{ width: `${skill.percentage}%` }}
+                            ></div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
 
-                {/* Right Column - Tech Stack */}
-                <div className="col-span-12 lg:col-span-5">
-                  <Slide direction="right" duration={1000} triggerOnce>
-                    <h3 className="text-base sm:text-lg font-semibold text-white mb-3 sm:mb-4 flex items-center gap-2">
-                      <div className="p-2 bg-purple-500/10 rounded-lg">
-                        <Code className="w-5 h-5 text-purple-400" />
-                      </div>
-                      Tech Stack
-                    </h3>
+                {/* Column 3: Tech Stack with 3D cards */}
+                <div className="md:col-span-12 lg:col-span-5">
+                  <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                    <div className="p-2 rounded-lg bg-purple-500/10 border border-purple-500/20">
+                      <Code className="w-5 h-5 text-purple-400" />
+                    </div>
+                    Tech Stack
+                  </h3>
 
-                    <div className="bg-gray-800/30 backdrop-blur-sm rounded-xl border border-gray-700/50 hover:border-purple-500/30 transition-all duration-500 p-6 relative overflow-hidden group">
-                      {/* Interactive background effect */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
-                      <div className="absolute -top-24 -right-24 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700 delay-100"></div>
-                      <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700 delay-200"></div>
-
-                      {/* Tech Stack Categories */}
+                  {/* Tech stack with glassmorphism cards */}
+                  <div className="backdrop-blur-sm bg-gray-800/30 rounded-xl border border-gray-700/50 p-6 hover:border-purple-500/30 transition-all duration-500 relative overflow-hidden">
+                    <div className="space-y-6">
+                      {/* Languages section with modern 3D cards */}
                       <div className="relative">
-                        {/* Programming Languages Section */}
-                        <div className="mb-8">
-                          <h4 className="text-lg font-medium text-purple-400 mb-4 pb-2 border-b border-gray-700/30 relative">
-                            <span className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-gradient-to-r after:from-purple-500 after:to-blue-500 after:w-0 after:group-hover:w-full after:transition-all after:duration-1000">
-                              Programming Languages
-                            </span>
-                          </h4>
-                          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
-                            {[
-                              { image: javascriptImage },
-                              { image: cImage },
-                              { image: cPlusPlusImage },
-                              { image: javaImage },
-                              { image: kotlinImage },
-                            ].map((tech, index) => (
-                              <Zoom
-                                key={index}
-                                delay={100 * index}
-                                duration={800}
-                                triggerOnce
-                              >
-                                <div className="group/icon relative transform perspective-1000 transition-all duration-300 hover:z-10">
-                                  <div className="aspect-square bg-gray-800/50 rounded-lg overflow-hidden flex items-center justify-center p-3 border border-gray-700/30 hover:border-purple-500/50 shadow-lg shadow-transparent hover:shadow-purple-500/10 transition-all duration-500 group-hover/icon:scale-110 group-hover/icon:rotate-3 transform-gpu">
-                                    <div className="absolute inset-0 bg-gradient-to-tl from-purple-500/10 via-transparent to-blue-500/10 opacity-0 group-hover/icon:opacity-100 transition-opacity duration-500"></div>
-                                    <div className="relative w-full h-full">
-                                      <img
-                                        src={tech.image}
-                                        alt=""
-                                        className="w-full h-full object-contain transition-all duration-500 group-hover/icon:scale-110 group-hover/icon:filter group-hover/icon:drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]"
-                                      />
-                                    </div>
-                                  </div>
-                                  {/* Pulsing glow effect on hover */}
-                                  <div className="absolute inset-0 -z-10 rounded-lg bg-purple-500/0 group-hover/icon:bg-purple-500/20 blur-xl transition-all duration-500 opacity-0 group-hover/icon:opacity-100 animate-pulse-slow"></div>
-                                </div>
-                              </Zoom>
-                            ))}
-                          </div>
+                        <h4 className="text-base font-medium text-purple-400 mb-4 flex items-center gap-2">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="w-4 h-4"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                          </svg>
+                          Programming Languages
+                        </h4>
+                        <div className="grid grid-cols-3 sm:grid-cols-5 gap-3 sm:gap-4">
+                          {[
+                            javascriptImage,
+                            cImage,
+                            cPlusPlusImage,
+                            javaImage,
+                            kotlinImage,
+                          ].map((image, i) => (
+                            <div
+                              key={i}
+                              className="group relative transform transition-all duration-300 hover:z-10 hover:-translate-y-2 active:translate-y-0 active:scale-95"
+                            >
+                              <div className="aspect-square bg-gray-800/70 backdrop-blur-md rounded-xl overflow-hidden flex items-center justify-center p-3 border border-gray-700/30 hover:border-purple-500/50 shadow-lg hover:shadow-purple-500/10 transition-all duration-300">
+                                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                                <img
+                                  src={image}
+                                  alt=""
+                                  className="w-full h-full object-contain transition-all duration-300 group-hover:scale-110 filter drop-shadow-[0_0_5px_rgba(139,92,246,0.3)]"
+                                />
+                              </div>
+                            </div>
+                          ))}
                         </div>
+                      </div>
 
-                        {/* Web Development Section */}
-                        <div className="mb-8">
-                          <h4 className="text-lg font-medium text-purple-400 mb-4 pb-2 border-b border-gray-700/30 relative">
-                            <span className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-gradient-to-r after:from-purple-500 after:to-blue-500 after:w-0 after:group-hover:w-full after:transition-all after:duration-1000 after:delay-100">
-                              Web Development
-                            </span>
-                          </h4>
-                          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
-                            {[
-                              { image: htmlImage },
-                              { image: cssImage },
-                              { image: reactImage },
-                              { image: nodejsImage },
-                            ].map((tech, index) => (
-                              <Zoom
-                                key={index}
-                                delay={200 * index}
-                                duration={800}
-                                triggerOnce
+                      {/* Web Development */}
+                      <div className="relative">
+                        <h4 className="text-base font-medium text-purple-400 mb-4 flex items-center gap-2">
+                          💻 Web Development
+                        </h4>
+                        <div className="grid grid-cols-3 sm:grid-cols-5 gap-3 sm:gap-4">
+                          {[htmlImage, cssImage, reactImage, nodejsImage].map(
+                            (image, i) => (
+                              <div
+                                key={i}
+                                className="group relative transform transition-all duration-300 hover:z-10 hover:-translate-y-2 active:translate-y-0 active:scale-95"
                               >
-                                <div className="group/icon relative transform perspective-1000 transition-all duration-300 hover:z-10">
-                                  <div className="aspect-square bg-gray-800/50 rounded-lg overflow-hidden flex items-center justify-center p-3 border border-gray-700/30 hover:border-purple-500/50 shadow-lg shadow-transparent hover:shadow-purple-500/10 transition-all duration-500 group-hover/icon:scale-110 group-hover/icon:rotate-3 transform-gpu">
-                                    <div className="absolute inset-0 bg-gradient-to-tl from-purple-500/10 via-transparent to-blue-500/10 opacity-0 group-hover/icon:opacity-100 transition-opacity duration-500"></div>
-                                    <div className="relative w-full h-full">
-                                      <img
-                                        src={tech.image}
-                                        alt=""
-                                        className="w-full h-full object-contain transition-all duration-500 group-hover/icon:scale-110 group-hover/icon:filter group-hover/icon:drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]"
-                                      />
-                                    </div>
-                                  </div>
-                                  {/* Pulsing glow effect on hover */}
-                                  <div className="absolute inset-0 -z-10 rounded-lg bg-purple-500/0 group-hover/icon:bg-purple-500/20 blur-xl transition-all duration-500 opacity-0 group-hover/icon:opacity-100 animate-pulse-slow"></div>
+                                <div className="aspect-square bg-gray-800/70 backdrop-blur-md rounded-xl overflow-hidden flex items-center justify-center p-3 border border-gray-700/30 hover:border-purple-500/50 shadow-lg hover:shadow-purple-500/10 transition-all duration-300">
+                                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                                  <img
+                                    src={image}
+                                    alt=""
+                                    className="w-full h-full object-contain transition-all duration-300 group-hover:scale-110 filter drop-shadow-[0_0_5px_rgba(139,92,246,0.3)]"
+                                  />
                                 </div>
-                              </Zoom>
-                            ))}
-                          </div>
+                              </div>
+                            )
+                          )}
                         </div>
+                      </div>
 
-                        {/* Mobile Development Section */}
-                        <div className="mb-8">
-                          <h4 className="text-lg font-medium text-purple-400 mb-4 pb-2 border-b border-gray-700/30 relative">
-                            <span className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-gradient-to-r after:from-purple-500 after:to-blue-500 after:w-0 after:group-hover:w-full after:transition-all after:duration-1000 after:delay-200">
-                              Mobile Development
-                            </span>
-                          </h4>
-                          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
-                            {[
-                              { image: flutterImage },
-                              { image: androidStudioImage },
-                            ].map((tech, index) => (
-                              <Zoom
-                                key={index}
-                                delay={300 * index}
-                                duration={800}
-                                triggerOnce
-                              >
-                                <div className="group/icon relative transform perspective-1000 transition-all duration-300 hover:z-10">
-                                  <div className="aspect-square bg-gray-800/50 rounded-lg overflow-hidden flex items-center justify-center p-3 border border-gray-700/30 hover:border-purple-500/50 shadow-lg shadow-transparent hover:shadow-purple-500/10 transition-all duration-500 group-hover/icon:scale-110 group-hover/icon:rotate-3 transform-gpu">
-                                    <div className="absolute inset-0 bg-gradient-to-tl from-purple-500/10 via-transparent to-blue-500/10 opacity-0 group-hover/icon:opacity-100 transition-opacity duration-500"></div>
-                                    <div className="relative w-full h-full">
-                                      <img
-                                        src={tech.image}
-                                        alt=""
-                                        className="w-full h-full object-contain transition-all duration-500 group-hover/icon:scale-110 group-hover/icon:filter group-hover/icon:drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]"
-                                      />
-                                    </div>
-                                  </div>
-                                  {/* Pulsing glow effect on hover */}
-                                  <div className="absolute inset-0 -z-10 rounded-lg bg-purple-500/0 group-hover/icon:bg-purple-500/20 blur-xl transition-all duration-500 opacity-0 group-hover/icon:opacity-100 animate-pulse-slow"></div>
-                                </div>
-                              </Zoom>
-                            ))}
-                          </div>
+                      {/* Database & Tools */}
+                      <div className="relative">
+                        <h4 className="text-base font-medium text-purple-400 mb-4 flex items-center gap-2">
+                          ⚙️ Databases & Tools
+                        </h4>
+                        <div className="grid grid-cols-3 sm:grid-cols-5 gap-3 sm:gap-4">
+                          {[
+                            mongodbImage,
+                            mysqlImage,
+                            gitImage,
+                            githubImage,
+                            vsCodeImage,
+                          ].map((image, i) => (
+                            <div
+                              key={i}
+                              className="group relative transform transition-all duration-300 hover:z-10 hover:-translate-y-2 active:translate-y-0 active:scale-95"
+                            >
+                              <div className="aspect-square bg-gray-800/70 backdrop-blur-md rounded-xl overflow-hidden flex items-center justify-center p-3 border border-gray-700/30 hover:border-purple-500/50 shadow-lg hover:shadow-purple-500/10 transition-all duration-300">
+                                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                                <img
+                                  src={image}
+                                  alt=""
+                                  className="w-full h-full object-contain transition-all duration-300 group-hover:scale-110 filter drop-shadow-[0_0_5px_rgba(139,92,246,0.3)]"
+                                />
+                              </div>
+                            </div>
+                          ))}
                         </div>
+                      </div>
 
-                        {/* Tools & Databases Section */}
-                        <div>
-                          <h4 className="text-lg font-medium text-purple-400 mb-4 pb-2 border-b border-gray-700/30 relative">
-                            <span className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-gradient-to-r after:from-purple-500 after:to-blue-500 after:w-0 after:group-hover:w-full after:transition-all after:duration-1000 after:delay-300">
-                              Tools & Databases
-                            </span>
-                          </h4>
-                          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
-                            {[
-                              { image: mongodbImage },
-                              { image: mysqlImage },
-                              { image: gitImage },
-                              { image: githubImage },
-                              { image: vsCodeImage },
-                            ].map((tech, index) => (
-                              <Zoom
-                                key={index}
-                                delay={400 * index}
-                                duration={800}
-                                triggerOnce
+                      {/* Mobile Development */}
+                      <div className="relative">
+                        <h4 className="text-base font-medium text-purple-400 mb-4 flex items-center gap-2">
+                          📱 Mobile Development
+                        </h4>
+                        <div className="grid grid-cols-3 sm:grid-cols-5 gap-3 sm:gap-4">
+                          {[androidStudioImage, flutterImage].map(
+                            (image, i) => (
+                              <div
+                                key={i}
+                                className="group relative transform transition-all duration-300 hover:z-10 hover:-translate-y-2 active:translate-y-0 active:scale-95"
                               >
-                                <div className="group/icon relative transform perspective-1000 transition-all duration-300 hover:z-10">
-                                  <div className="aspect-square bg-gray-800/50 rounded-lg overflow-hidden flex items-center justify-center p-3 border border-gray-700/30 hover:border-purple-500/50 shadow-lg shadow-transparent hover:shadow-purple-500/10 transition-all duration-500 group-hover/icon:scale-110 group-hover/icon:rotate-3 transform-gpu">
-                                    <div className="absolute inset-0 bg-gradient-to-tl from-purple-500/10 via-transparent to-blue-500/10 opacity-0 group-hover/icon:opacity-100 transition-opacity duration-500"></div>
-                                    <div className="relative w-full h-full">
-                                      <img
-                                        src={tech.image}
-                                        alt=""
-                                        className="w-full h-full object-contain transition-all duration-500 group-hover/icon:scale-110 group-hover/icon:filter group-hover/icon:drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]"
-                                      />
-                                    </div>
-                                  </div>
-                                  {/* Pulsing glow effect on hover */}
-                                  <div className="absolute inset-0 -z-10 rounded-lg bg-purple-500/0 group-hover/icon:bg-purple-500/20 blur-xl transition-all duration-500 opacity-0 group-hover/icon:opacity-100 animate-pulse-slow"></div>
+                                <div className="aspect-square bg-gray-800/70 backdrop-blur-md rounded-xl overflow-hidden flex items-center justify-center p-3 border border-gray-700/30 hover:border-purple-500/50 shadow-lg hover:shadow-purple-500/10 transition-all duration-300">
+                                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                                  <img
+                                    src={image}
+                                    alt=""
+                                    className="w-full h-full object-contain transition-all duration-300 group-hover:scale-110 filter drop-shadow-[0_0_5px_rgba(139,92,246,0.3)]"
+                                  />
                                 </div>
-                              </Zoom>
-                            ))}
-                          </div>
+                              </div>
+                            )
+                          )}
                         </div>
                       </div>
                     </div>
-                  </Slide>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-
-          <div className="absolute bottom-0 left-0 w-full h-24 overflow-hidden bg-gradient-to-b from-transparent to-gray-900 backdrop-blur-sm">
-            <div className="absolute inset-0 opacity-30">
-              <div className="absolute h-1 w-1 rounded-full bg-purple-500 top-1/4 left-1/4"></div>
-              <div className="absolute h-2 w-2 rounded-full bg-blue-500 top-1/3 left-1/2"></div>
-              <div className="absolute h-1 w-1 rounded-full bg-purple-500 top-1/2 left-3/4"></div>
-              {/* Add more dots with varied positions and sizes */}
             </div>
           </div>
         </section>
@@ -548,7 +569,7 @@ const Portfolio = () => {
         >
           {/* Animated Background Orbs */}
           <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+            <div className="hidden sm:block absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
             <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-700"></div>
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] bg-purple-900/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
           </div>
