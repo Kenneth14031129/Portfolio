@@ -39,13 +39,7 @@ const Portfolio = () => {
       title: "LIFEEC: Web Application",
       description:
         "An advanced web platform designed for owners and administrators of HomeMedix.",
-      tags: [
-        "React.js",
-        "Node.js",
-        "MongoDB",
-        "REST API",
-        "Descriptive Analytics",
-      ],
+      tags: ["React.js", "Node.js", "MongoDB", "REST API"],
       Icon: MonitorIcon,
       iconColor: "text-violet-400",
       stats: {
@@ -246,15 +240,15 @@ const Portfolio = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div className="bg-gray-800/30 rounded-2xl border border-gray-700/50 backdrop-blur-sm relative overflow-hidden">
               {/* Main Content Grid - Restructured for Width */}
-              <div className="grid grid-cols-12 gap-6 p-8">
+              <div className="grid grid-cols-12 gap-4 sm:gap-6 p-4 sm:p-6 md:p-8">
                 {/* Left Column - Profile */}
                 <div className="col-span-12 lg:col-span-3">
                   <Slide direction="left" duration={1000} triggerOnce>
                     <div className="flex flex-col items-center lg:sticky lg:top-24">
                       {/* Profile Picture */}
-                      <div className="relative w-32 h-32 group perspective mb-6">
+                      <div className="relative w-24 h-24 sm:w-32 sm:h-32 group perspective mb-4 sm:mb-6">
                         <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-600 via-blue-600 to-purple-600 blur-lg opacity-75 group-hover:opacity-100 transition duration-1000 animate-tilt"></div>
-                        <div className="relative w-32 h-32 rounded-full border-4 border-gray-800 overflow-hidden backdrop-blur-sm transform-gpu transition-transform duration-700 group-hover:scale-105">
+                        <div className="relative w-24 h-24 sm:w-32 sm:h-32 rounded-full border-3 sm:border-4 border-gray-800 overflow-hidden backdrop-blur-sm transform-gpu transition-transform duration-700 group-hover:scale-105">
                           <img
                             src={profileImage}
                             alt="Profile"
@@ -264,7 +258,7 @@ const Portfolio = () => {
                       </div>
 
                       {/* Name and Title */}
-                      <h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-blue-400 to-purple-400 text-center">
+                      <h2 className="text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-blue-400 to-purple-400 text-center">
                         Kenneth P. Gaviola
                       </h2>
                       <p className="mt-2 text-purple-400 text-lg">
@@ -326,8 +320,8 @@ const Portfolio = () => {
                 <div className="col-span-12 lg:col-span-4">
                   <Fade delay={400} duration={1000} triggerOnce>
                     {/* Professional Summary */}
-                    <div className="bg-gray-800/30 rounded-lg p-6 border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 mb-6">
-                      <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                    <div className="bg-gray-800/30 rounded-lg p-4 sm:p-6 border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 mb-4 sm:mb-6">
+                      <h3 className="text-base sm:text-lg font-semibold text-white mb-3 sm:mb-4 flex items-center gap-2">
                         <div className="p-2 bg-purple-500/10 rounded-lg">
                           <FileText className="w-5 h-5 text-purple-400" />
                         </div>
@@ -347,7 +341,7 @@ const Portfolio = () => {
                   <Fade delay={600} duration={1000} triggerOnce>
                     {/* Current Focus */}
                     <div className="space-y-3">
-                      <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                      <h3 className="text-base sm:text-lg font-semibold text-white mb-3 sm:mb-4 flex items-center gap-2">
                         <div className="p-2 bg-purple-500/10 rounded-lg">
                           <Code className="w-5 h-5 text-purple-400" />
                         </div>
@@ -403,7 +397,7 @@ const Portfolio = () => {
                 {/* Right Column - Tech Stack */}
                 <div className="col-span-12 lg:col-span-5">
                   <Slide direction="right" duration={1000} triggerOnce>
-                    <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                    <h3 className="text-base sm:text-lg font-semibold text-white mb-3 sm:mb-4 flex items-center gap-2">
                       <div className="p-2 bg-purple-500/10 rounded-lg">
                         <Code className="w-5 h-5 text-purple-400" />
                       </div>
@@ -425,7 +419,7 @@ const Portfolio = () => {
                               Programming Languages
                             </span>
                           </h4>
-                          <div className="grid grid-cols-5 gap-4">
+                          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
                             {[
                               { image: javascriptImage },
                               { image: cImage },
@@ -465,7 +459,7 @@ const Portfolio = () => {
                               Web Development
                             </span>
                           </h4>
-                          <div className="grid grid-cols-5 gap-4">
+                          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
                             {[
                               { image: htmlImage },
                               { image: cssImage },
@@ -504,7 +498,7 @@ const Portfolio = () => {
                               Mobile Development
                             </span>
                           </h4>
-                          <div className="grid grid-cols-5 gap-4">
+                          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
                             {[
                               { image: flutterImage },
                               { image: androidStudioImage },
@@ -541,7 +535,7 @@ const Portfolio = () => {
                               Tools & Databases
                             </span>
                           </h4>
-                          <div className="grid grid-cols-5 gap-4">
+                          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
                             {[
                               { image: mongodbImage },
                               { image: mysqlImage },
@@ -610,14 +604,14 @@ const Portfolio = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             {/* Section Header */}
             <Fade duration={1000}>
-              <div className="text-center mb-16 relative">
+              <div className="text-center mb-8 sm:mb-16 relative">
                 <div className="inline-block">
-                  <h2 className="text-4xl font-bold text-white bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-400 mb-4">
+                  <h2 className="text-3xl sm:text-4xl font-bold text-white bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-400 mb-4">
                     Portfolio Showcase
                   </h2>
-                  <div className="h-1 w-32 mx-auto bg-gradient-to-r from-purple-500 to-blue-500 rounded-full"></div>
+                  <div className="h-1 w-24 sm:w-32 mx-auto bg-gradient-to-r from-purple-500 to-blue-500 rounded-full"></div>
                 </div>
-                <p className="mt-6 text-gray-400 text-lg max-w-2xl mx-auto">
+                <p className="mt-4 sm:mt-6 text-gray-400 text-base sm:text-lg max-w-2xl mx-auto">
                   Exploring my journey through innovative projects and
                   achievements
                 </p>
@@ -626,10 +620,10 @@ const Portfolio = () => {
 
             {/* Enhanced Tab Buttons */}
             <Zoom duration={800} delay={300}>
-              <div className="flex justify-center gap-6 mb-16">
+              <div className="flex justify-center gap-2 sm:gap-6 mb-8 sm:mb-16">
                 <button
                   onClick={() => setActiveTab("projects")}
-                  className={`group relative px-8 py-4 rounded-xl font-medium transition-all duration-300 overflow-hidden ${
+                  className={`group relative px-4 sm:px-8 py-3 sm:py-4 rounded-xl text-sm sm:text-base font-medium transition-all duration-300 overflow-hidden ${
                     activeTab === "projects"
                       ? "text-white"
                       : "text-gray-300 hover:text-white"
@@ -654,7 +648,7 @@ const Portfolio = () => {
 
                 <button
                   onClick={() => setActiveTab("certificates")}
-                  className={`group relative px-8 py-4 rounded-xl font-medium transition-all duration-300 overflow-hidden ${
+                  className={`group relative px-4 sm:px-8 py-3 sm:py-4 rounded-xl text-sm sm:text-base font-medium transition-all duration-300 overflow-hidden ${
                     activeTab === "certificates"
                       ? "text-white"
                       : "text-gray-300 hover:text-white"
@@ -697,7 +691,7 @@ const Portfolio = () => {
                         <div className="relative group">
                           <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                           <project.Icon
-                            className={`w-24 h-24 ${project.iconColor} transition-transform duration-500 group-hover:scale-110`}
+                            className={`w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 ${project.iconColor} transition-transform duration-500 group-hover:scale-110`}
                           />
                         </div>
 
@@ -711,26 +705,26 @@ const Portfolio = () => {
                         </div>
                       </div>
 
-                      <div className="relative p-8 space-y-6">
+                      <div className="relative p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6">
                         {/* Enhanced Title and Description */}
                         <div>
-                          <h3 className="text-2xl font-bold text-white group-hover:text-purple-400 transition-colors duration-300">
+                          <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-purple-400 transition-colors duration-300">
                             {project.title}
                           </h3>
-                          <p className="mt-3 text-gray-300 text-lg leading-relaxed">
+                          <p className="mt-2 sm:mt-3 text-gray-300 text-base sm:text-lg leading-relaxed">
                             {project.description}
                           </p>
                         </div>
 
                         {/* Enhanced Tech Stack */}
-                        <div className="flex flex-wrap gap-2">
+                        <div className="flex flex-wrap gap-1.5 sm:gap-2">
                           {project.tags.map((tag, tagIndex) => (
                             <Fade
                               key={tag}
                               delay={500 + tagIndex * 100}
                               cascade
                             >
-                              <span className="px-3 py-1.5 bg-gray-700/50 text-gray-300 rounded-lg text-sm border border-gray-700/50 hover:border-purple-500/50 transition-colors duration-300 font-medium">
+                              <span className="px-2 sm:px-3 py-1 sm:py-1.5 bg-gray-700/50 text-gray-300 rounded-lg text-xs sm:text-sm border border-gray-700/50 hover:border-purple-500/50 transition-colors duration-300 font-medium">
                                 {tag}
                               </span>
                             </Fade>
@@ -738,7 +732,7 @@ const Portfolio = () => {
                         </div>
 
                         {/* Enhanced Project Stats */}
-                        <div className="grid grid-cols-3 gap-6 py-6 border-t border-gray-700/50">
+                        <div className="grid grid-cols-3 gap-2 sm:gap-6 py-4 sm:py-6 border-t border-gray-700/50">
                           {Object.entries(project.stats).map(
                             ([key, value], statIndex) => (
                               <Fade
@@ -747,10 +741,10 @@ const Portfolio = () => {
                                 cascade
                               >
                                 <div className="text-center">
-                                  <div className="text-purple-400 font-semibold text-base">
+                                  <div className="text-purple-400 font-semibold text-sm sm:text-base">
                                     {value}
                                   </div>
-                                  <div className="text-sm text-gray-400 capitalize mt-1">
+                                  <div className="text-xs sm:text-sm text-gray-400 capitalize mt-0.5 sm:mt-1">
                                     {key}
                                   </div>
                                 </div>
@@ -769,20 +763,20 @@ const Portfolio = () => {
             {activeTab === "certificates" && (
               <Zoom duration={1000} delay={300}>
                 <div className="max-w-2xl mx-auto text-center">
-                  <div className="bg-gray-800/30 border border-gray-700/50 rounded-xl p-8 hover:border-purple-500/50 transition-all duration-500">
+                  <div className="bg-gray-800/30 border border-gray-700/50 rounded-xl p-5 sm:p-8 hover:border-purple-500/50 transition-all duration-500">
                     {/* Coming Soon Icon */}
                     <Bounce delay={600}>
-                      <div className="flex justify-center mb-6">
-                        <FileText className="w-12 h-12 text-purple-400" />
+                      <div className="flex justify-center mb-4 sm:mb-6">
+                        <FileText className="w-10 h-10 sm:w-12 sm:h-12 text-purple-400" />
                       </div>
                     </Bounce>
 
                     {/* Message */}
                     <Fade cascade delay={800}>
-                      <h3 className="text-2xl font-bold text-white mb-4">
+                      <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">
                         Certificates Coming Soon
                       </h3>
-                      <p className="text-gray-400 text-lg mb-6">
+                      <p className="text-gray-400 text-base sm:text-lg mb-4 sm:mb-6">
                         Currently working on gaining certifications in various
                         technology areas. Check back later for updates!
                       </p>
