@@ -6,6 +6,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const location = useLocation();
 
   const navItems = [
@@ -14,6 +15,22 @@ const Header = () => {
     { label: "Projects", href: "/projects" },
     { label: "Contact", href: "/contact" },
   ];
+
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Initial check
+    checkIfMobile();
+    
+    // Add resize listener
+    window.addEventListener('resize', checkIfMobile);
+    
+    return () => {
+      window.removeEventListener('resize', checkIfMobile);
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,7 +62,7 @@ const Header = () => {
         ${
           scrolled
             ? "bg-gray-900/95 backdrop-blur-lg shadow-lg shadow-black/10"
-            : "bg-transparent"
+            : isMobile ? "bg-black/20 backdrop-blur-sm" : "bg-transparent"
         }`}
     >
       {/* Skip to main content link - for accessibility */}
@@ -56,7 +73,7 @@ const Header = () => {
         Skip to main content
       </a>
 
-      {/* Scroll progress indicator */}
+      {/* Scroll progress indicator - thinner on mobile */}
       <div
         className="absolute top-0 left-0 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400"
         style={{ width: `${scrollProgress}%` }}
@@ -64,11 +81,11 @@ const Header = () => {
       ></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="flex items-center space-x-2">
+        <div className="flex justify-between items-center h-14 sm:h-16">
+          {/* Logo - smaller on mobile */}
+          <div className="flex items-center">
             <Link to="/" className="relative group">
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+              <h1 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
                 JKG
               </h1>
               <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400 transition-all duration-300 group-hover:w-full group-focus-within:w-full" />
@@ -77,12 +94,12 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center">
-            <div className="flex space-x-8">
+            <div className="flex space-x-6 lg:space-x-8">
               {navItems.map(({ label, href }) => (
                 <Link
                   key={label}
                   to={href}
-                  className={`relative px-4 py-2 text-sm font-medium transition-colors duration-200 focus:outline-none
+                  className={`relative px-3 lg:px-4 py-2 text-sm font-medium transition-colors duration-200 focus:outline-none
                     ${
                       location.pathname === href
                         ? "text-purple-400"
@@ -103,10 +120,10 @@ const Header = () => {
             </div>
           </nav>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - Larger touch area */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-gray-800/50 focus:bg-gray-800/70 text-gray-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500/50"
+            className="md:hidden p-2 rounded-lg hover:bg-gray-800/50 focus:bg-gray-800/70 text-gray-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500/50 touch-manipulation"
             aria-label="Toggle menu"
             aria-expanded={isMenuOpen}
           >
@@ -118,18 +135,18 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu - Improved touch targets and transitions */}
         <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-            isMenuOpen ? "max-h-48 opacity-100" : "max-h-0 opacity-0"
+          className={`md:hidden overflow-hidden transition-all duration-200 ease-in-out ${
+            isMenuOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          <nav className="py-2 space-y-1">
+          <nav className="py-1 space-y-1">
             {navItems.map(({ label, href }) => (
               <Link
                 key={label}
                 to={href}
-                className={`block px-4 py-2 text-sm rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500/50
+                className={`block px-4 py-2.5 text-sm rounded-lg transition-all duration-200 touch-manipulation focus:outline-none focus:ring-2 focus:ring-purple-500/50
                   ${
                     location.pathname === href
                       ? "bg-purple-500/10 text-purple-400"
@@ -140,6 +157,9 @@ const Header = () => {
               </Link>
             ))}
           </nav>
+          
+          {/* Extra padding at the bottom of mobile menu for better UX */}
+          <div className="h-1"></div>
         </div>
       </div>
     </header>
