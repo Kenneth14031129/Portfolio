@@ -1,28 +1,47 @@
+// Import the new ImageViewer component
 import { useState, useEffect } from "react";
 import { Fade, Zoom } from "react-awesome-reveal";
-import { Code, FileText, MonitorIcon, SmartphoneIcon, ExternalLink, GithubIcon } from "lucide-react";
+import {
+  Code,
+  FileText,
+  MonitorIcon,
+  SmartphoneIcon,
+  Eye,
+} from "lucide-react";
+import ImageViewer from "./ImageViewer";
+import dashboardImg from "../assets/Dashboard.png";
+import addResidentImg from "../assets/Add-Resident.png";
+import addUserImg from "../assets/Add-User.png";
+import archiveImg from "../assets/Archive.png";
+import loginImg from "../assets/Login.png";
+import forgotPasswordImg from "../assets/Forgot-Password.png";
+import messagesImg from "../assets/Messages.png";
+import myProfileImg from "../assets/My-Profile.png";
+import residentListImg from "../assets/Resident-List.png";
 
 const Projects = () => {
   const [activeTab, setActiveTab] = useState("projects");
   const [isMobile, setIsMobile] = useState(false);
+  const [showImageViewer, setShowImageViewer] = useState(false);
+  const [currentProject, setCurrentProject] = useState(null);
 
   // Check if mobile and set up window resize listener
   useEffect(() => {
     const checkIfMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     // Initial check
     checkIfMobile();
-    
+
     // Add resize listener
-    window.addEventListener('resize', checkIfMobile);
-    
+    window.addEventListener("resize", checkIfMobile);
+
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
-    
+
     return () => {
-      window.removeEventListener('resize', checkIfMobile);
+      window.removeEventListener("resize", checkIfMobile);
     };
   }, []);
 
@@ -35,8 +54,17 @@ const Projects = () => {
       tags: ["React", "NodeJS", "MongoDB", "Tailwind CSS"],
       Icon: MonitorIcon,
       iconColor: "text-violet-400",
-      demoUrl: "#",
-      githubUrl: "#",
+      images: [
+        loginImg,
+        forgotPasswordImg,
+        dashboardImg,
+        myProfileImg,
+        addUserImg,
+        addResidentImg,
+        residentListImg,
+        archiveImg,
+        messagesImg,
+      ],
     },
     {
       id: 2,
@@ -47,19 +75,37 @@ const Projects = () => {
       isAndroidApp: true,
       Icon: SmartphoneIcon,
       iconColor: "text-green-400",
-      demoUrl: "#",
-      githubUrl: "#",
+      images: [
+        "/images/mobile-dashboard.png",
+        "/images/mobile-login.png",
+        "/images/mobile-residents.png",
+      ],
     },
   ];
 
+  const handleViewImages = (project) => {
+    setCurrentProject(project);
+    setShowImageViewer(true);
+    // Prevent scrolling when modal is open
+    document.body.style.overflow = "hidden";
+  };
+
+  const handleCloseViewer = () => {
+    setShowImageViewer(false);
+    setCurrentProject(null);
+    // Re-enable scrolling
+    document.body.style.overflow = "auto";
+  };
+
   return (
-    <main id="main-content" className={isMobile ? "pt-16" : ""}> {/* Mobile-only padding top */}
+    <main id="main-content" className={isMobile ? "pt-16" : ""}>
+      {/* Mobile-only padding top */}
       <section className="py-12 md:py-24 bg-gradient-to-br from-gray-900 to-black relative">
         {/* Animated Background Orbs - Simplified for mobile */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="hidden sm:block absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-1/4 right-1/4 w-48 md:w-96 h-48 md:h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-700"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 md:w-[40rem] h-64 md:h-[40rem] bg-purple-900/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 md:w-96 h-64 md:h-96 bg-purple-900/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -144,7 +190,7 @@ const Projects = () => {
                   <div className="group relative bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700/50 hover:border-purple-500/50 transition-all duration-500">
                     {/* Enhanced Hover Backdrop */}
                     <div className="absolute inset-0 bg-gradient-to-b from-purple-600/0 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    
+
                     {/* Project Icon section - smaller on mobile */}
                     <div className="relative aspect-video sm:aspect-w-16 sm:aspect-h-9 bg-gray-900/50 flex items-center justify-center p-6 sm:p-8 md:p-12">
                       <div className="relative group">
@@ -172,7 +218,7 @@ const Projects = () => {
                       {/* Tech Stack - Mobile friendly wrapping */}
                       <div className="flex flex-wrap gap-1 sm:gap-1.5 md:gap-2">
                         {project.tags.map((tag) => (
-                          <span 
+                          <span
                             key={tag}
                             className="px-2 sm:px-2.5 md:px-3 py-0.5 sm:py-1 md:py-1.5 bg-gray-700/50 text-gray-300 rounded-lg text-xs sm:text-sm border border-gray-700/50 hover:border-purple-500/50 transition-colors duration-300 font-medium"
                           >
@@ -180,23 +226,16 @@ const Projects = () => {
                           </span>
                         ))}
                       </div>
-                      
-                      {/* Mobile Action Links */}
+
+                      {/* Enhanced View Button */}
                       <div className="flex gap-3 pt-1">
-                        <a
-                          href={project.demoUrl}
-                          className="flex items-center gap-1 text-xs sm:text-sm font-medium text-purple-400 hover:text-purple-300 transition-colors duration-300"
+                        <button
+                          onClick={() => handleViewImages(project)}
+                          className="group flex items-center gap-2 px-3 py-1.5 bg-gray-800/70 hover:bg-gradient-to-r from-purple-600/80 to-blue-600/80 rounded-lg transition-all duration-300 text-xs sm:text-sm font-medium"
                         >
-                          <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
-                          <span>Live Demo</span>
-                        </a>
-                        <a
-                          href={project.githubUrl}
-                          className="flex items-center gap-1 text-xs sm:text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors duration-300"
-                        >
-                          <GithubIcon className="w-3 h-3 sm:w-4 sm:h-4" />
-                          <span>Source Code</span>
-                        </a>
+                          <Eye className="w-3.5 h-3.5 text-purple-400 group-hover:text-white transition-colors duration-300" />
+                          <span className="text-gray-300 group-hover:text-white transition-colors duration-300">View Project</span>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -243,6 +282,14 @@ const Projects = () => {
           </div>
         </div>
       </section>
+
+      {/* Use the new ImageViewer component instead of the old modal */}
+      {showImageViewer && currentProject && (
+        <ImageViewer 
+          project={currentProject} 
+          onClose={handleCloseViewer} 
+        />
+      )}
     </main>
   );
 };
