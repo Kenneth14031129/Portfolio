@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
+    "framer-motion": "^12.5.0",
     "lucide-react": "^0.469.0",
     "react": "^19.0.0",
     "react-awesome-reveal": "^4.3.1",
