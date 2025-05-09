@@ -98,8 +98,8 @@ const Home = () => {
               </Fade>
             </div>
 
-            {/* Right Side - Without Container */}
-            <div className="w-full lg:w-1/2 h-[200px] xs:h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] xl:h-[500px] relative flex items-center justify-center mt-6 lg:mt-0">
+            {/* Right Side - Hidden on mobile, visible on larger screens */}
+            <div className="hidden md:block w-full lg:w-1/2 h-[200px] xs:h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] xl:h-[600px] relative items-center justify-center mt-6 lg:mt-0">
               {splineLoading && (
                 <div className="absolute inset-0 flex items-center justify-center z-10">
                   <div className="flex flex-col items-center"></div>

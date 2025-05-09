@@ -37,9 +37,7 @@ const Contact = () => {
   };
 
   return (
-    <main
-      id="main-content"
-      className={isMobile ? "pt-16" : ""}>
+    <main id="main-content" className={isMobile ? "pt-16" : ""}>
       <section className="w-full py-12 md:py-40 bg-gradient-to-br from-gray-900 via-black to-gray-900 relative">
         {/* Optimized Background Decorations - Less intensive for mobile */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -146,15 +144,7 @@ const Contact = () => {
                       <div className="flex items-center justify-center gap-2 text-gray-300">
                         <MapPin className="w-3 h-3 md:w-4 md:h-4 text-green-400" />
                         <span className="text-xs md:text-sm">
-                          Available for remote & on-site
-                        </span>
-                      </div>
-
-                      {/* Mobile indicator */}
-                      <div className="flex items-center justify-center gap-2 text-gray-300 mt-2">
-                        <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-green-400 animate-pulse"></div>
-                        <span className="text-xs md:text-sm">
-                          Currently available
+                          Available for remote
                         </span>
                       </div>
                     </div>

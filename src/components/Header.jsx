@@ -23,12 +23,12 @@ const Header = () => {
 
     // Initial check
     checkIfMobile();
-    
+
     // Add resize listener
-    window.addEventListener('resize', checkIfMobile);
-    
+    window.addEventListener("resize", checkIfMobile);
+
     return () => {
-      window.removeEventListener('resize', checkIfMobile);
+      window.removeEventListener("resize", checkIfMobile);
     };
   }, []);
 
@@ -62,17 +62,11 @@ const Header = () => {
         ${
           scrolled
             ? "bg-gray-900/95 backdrop-blur-lg shadow-lg shadow-black/10"
-            : isMobile ? "bg-black/20 backdrop-blur-sm" : "bg-transparent"
+            : isMobile
+            ? "bg-black/20 backdrop-blur-sm"
+            : "bg-transparent"
         }`}
     >
-      {/* Skip to main content link - for accessibility */}
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-purple-500 focus:text-white focus:rounded-lg"
-      >
-        Skip to main content
-      </a>
-
       {/* Scroll progress indicator - thinner on mobile */}
       <div
         className="absolute top-0 left-0 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400"
@@ -157,7 +151,7 @@ const Header = () => {
               </Link>
             ))}
           </nav>
-          
+
           {/* Extra padding at the bottom of mobile menu for better UX */}
           <div className="h-1"></div>
         </div>
